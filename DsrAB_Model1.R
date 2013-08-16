@@ -104,16 +104,18 @@ Rp.36.Delta = CalcRp(j,Dsr.36Rs$redD,Dsr.36Rs$oxD)
 
 #calculate alpha total in each case
 alphaT.36 = Calc.alphaT(Rp.36,Dsr.36Rs$SO30,f)
-alphaT.36.Delta = Calc.alphaT(Rp.34.Delta,Dsr.34Rs$SO30,f)
+alphaT.36.Delta = Calc.alphaT(Rp.36.Delta,Dsr.36Rs$SO30,f)
 
 #calculate alphas for oxidized and reduced moieties
-alpha.red.34 = Calc.alphax(Dsr.34Rs$red, Dsr.34Rs$SO30, alphaT.34, f)
-alpha.red.34.Delta = Calc.alphax(Dsr.34Rs$redD, Dsr.34Rs$SO30, alphaT.34.Delta, f)
+alpha.red.36 = Calc.alphax(Dsr.36Rs$red, Dsr.36Rs$SO30, alphaT.36, f)
+alpha.red.36.Delta = Calc.alphax(Dsr.36Rs$redD, Dsr.36Rs$SO30, alphaT.36.Delta, f)
 
-alpha.ox.34 = Calc.alphax(Dsr.34Rs$ox, Dsr.34Rs$SO30, alphaT.34, f)
-alpha.ox.34.Delta = Calc.alphax(Dsr.34Rs$oxD, Dsr.34Rs$SO30, alphaT.34.Delta, f)
+alpha.ox.36 = Calc.alphax(Dsr.36Rs$ox, Dsr.36Rs$SO30, alphaT.36, f)
+alpha.ox.36.Delta = Calc.alphax(Dsr.36Rs$oxD, Dsr.36Rs$SO30, alphaT.36.Delta, f)
 
 
 ############################# 
+############################# 
 
-
+lambda.33.red = 
+lambda.33.red.Delta
