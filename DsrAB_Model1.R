@@ -30,16 +30,16 @@ CalcRp <-function(J, Rred, Rox)
 }
 
 #function to calculate alpha-total (alphaT)
-Calc.alphaT <-function(Rp, Rao, F)
+Calc.alphaT <-function(Rp, Rao, f)
 {
-  alphaT = log(((Rp/Rao)*(F-1))+1)/(log(F))
+  alphaT = log(((Rp/Rao)*(f-1))+1)/(log(f))
   return(alphaT)
 }
 
 #function to calculate alpha-x (alpha-x where x is reduced or oxidized)
-Calc.alphax <-function(Rx, Rao, alphaT, F)
+Calc.alphax <-function(Rx, Rao, alphaT, f)
 {
-  alphax = (Rx/Rao)*(alphaT/((F^alphaT)-1))*(F-1)
+  alphax = (Rx/Rao)*(alphaT/((f^alphaT)-1))*(f-1)
   return(alphax)
 }
 
