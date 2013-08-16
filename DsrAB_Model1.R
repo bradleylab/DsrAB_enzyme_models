@@ -117,5 +117,18 @@ alpha.ox.36.Delta = Calc.alphax(Dsr.36Rs$oxD, Dsr.36Rs$SO30, alphaT.36.Delta, f)
 ############################# 
 ############################# 
 
-lambda.33.red = 
-lambda.33.red.Delta
+#######   LAMBDA 33   #######   
+##reduced
+lambda.33.red = log(alpha.red.33)/log(alpha.red.34)
+lambda.33.red.Delta=  log(alpha.red.33.Delta)/log(alpha.red.34.Delta)
+##oxidized
+lambda.33.ox = log(alpha.ox.33)/log(alpha.ox.34)
+lambda.33.ox.Delta=  log(alpha.ox.33.Delta)/log(alpha.ox.34.Delta)
+
+#######   LAMBDA 36   #######  
+##reduced
+lambda.36.red = log(alpha.red.36)/log(alpha.red.34)
+lambda.36.red.Delta=  log(alpha.red.36.Delta)/log(alpha.red.34.Delta)
+##oxidized
+lambda.36.ox = log(alpha.ox.36)/log(alpha.ox.34)
+lambda.36.ox.Delta=  log(alpha.ox.36.Delta)/log(alpha.ox.34.Delta)
