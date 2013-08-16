@@ -30,16 +30,16 @@ CalcRp <-function(J, Rred, Rox)
 }
 
 #function to calculate alpha-total (alphaT)
-Calc.alphaT <-function(Rp, Rao, F)
+Calc.alphaT <-function(Rp, Rao, f)
 {
-  alphaT = log(((Rp/Rao)*(F-1))+1)/(log(F))
+  alphaT = log(((Rp/Rao)*(f-1))+1)/(log(f))
   return(alphaT)
 }
 
 #function to calculate alpha-x (alpha-x where x is reduced or oxidized)
-Calc.alphax <-function(Rx, Rao, alphaT, F)
+Calc.alphax <-function(Rx, Rao, alphaTot, f)
 {
-  alphax = (Rx/Rao)*(alphaT/((F^alphaT)-1))*(F-1)
+  alphax = (Rx/Rao)*(alphaTot/((f^alphaTot)-1))*(f-1)
   return(alphax)
 }
 
@@ -71,8 +71,8 @@ Rp.34 = CalcRp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
 Rp.34.Delta = CalcRp(j,Dsr.34Rs$redD,Dsr.34Rs$oxD)
 
 #calculate alpha total in each case
-alphaT.34 = Calc.alphax(Rp.34,Dsr.34Rs$SO30,f)
-alphaT.34.Delta = Calc.alphax(Rp.34.Delta,Dsr.34Rs$SO30,f)
+alpha.T.34 = Calc.alphax(Rp.34,Dsr.34Rs$SO30,f)
+alpha.T.34.Delta = Calc.alphax(Rp.34.Delta,Dsr.34Rs$SO30,f)
 
 #calculate alphas for oxidized and reduced moieties
 alpha.red.34 = Calc.alphax(Dsr.34Rs$red, Dsr.34Rs$SO30, alphaT.34, f)
