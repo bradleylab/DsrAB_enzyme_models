@@ -26,7 +26,7 @@ CalcJ <-function(ThiosulfS, TrithioS)
 }
 
 #function to calculate isotope ratio of the total product (Rp)
-CalcRp <-function(J, Rred, Rox)
+Calc.Rp <-function(J, Rred, Rox)
 {
   Rp=((1/2)*J+(1/3)*(1-J))*Rred + ((1/2)*J+(2/3)*(1-J))*Rox
   return(Rp)
@@ -79,8 +79,8 @@ Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
-Rp.34 = CalcRp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
-Rp.34.Delta = CalcRp(j,Dsr.34Rs$redD,Dsr.34Rs$oxD)
+Rp.34 = Calc.Rp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
+Rp.34.Delta = Calc.Rp(j,Dsr.34Rs$redD,Dsr.34Rs$oxD)
 
 #calculate alpha total in each case
 alphaT.34 = Calc.alphaT(Rp.34, Dsr.34Rs$SO30, f)
@@ -95,8 +95,8 @@ alpha.ox.34.Delta = Calc.alphax(Dsr.34Rs$oxD, Dsr.34Rs$SO30, alphaT.34.Delta, f)
 
 ############ 33 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
-Rp.33 = CalcRp(j,Dsr.33Rs$red,Dsr.33Rs$ox)
-Rp.33.Delta = CalcRp(j,Dsr.33Rs$redD,Dsr.33Rs$oxD)
+Rp.33 = Calc.Rp(j,Dsr.33Rs$red,Dsr.33Rs$ox)
+Rp.33.Delta = Calc.Rp(j,Dsr.33Rs$redD,Dsr.33Rs$oxD)
 
 #calculate alpha total in each case
 alphaT.33 <- Calc.alphaT(Rp.33,Dsr.33Rs$SO30,f)
@@ -111,8 +111,8 @@ alpha.ox.33.Delta = Calc.alphax(Dsr.33Rs$oxD, Dsr.33Rs$SO30, alphaT.33.Delta, f)
 
 ############ 36 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
-Rp.36 = CalcRp(j,Dsr.36Rs$red,Dsr.36Rs$ox)
-Rp.36.Delta = CalcRp(j,Dsr.36Rs$redD,Dsr.36Rs$oxD)
+Rp.36 = Calc.Rp(j,Dsr.36Rs$red,Dsr.36Rs$ox)
+Rp.36.Delta = Calc.Rp(j,Dsr.36Rs$redD,Dsr.36Rs$oxD)
 
 #calculate alpha total in each case
 alphaT.36 = Calc.alphaT(Rp.36,Dsr.36Rs$SO30,f)
