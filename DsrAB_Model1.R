@@ -47,11 +47,12 @@ Calc.alphax <-function(Rx, Rao, alphaT, f)
 }
 
 #function to show only reliable results from a calculation. Pass a vector
-Reliable <-function(fullresults)
+Reliable <-function(cullresults)
 {
-  TempFrame <- data.frame(fullresults,Dsr$suspect)
-  reliable = subset(TempFrame$fullresults, TempFrame$fullresults != "Na" & TempFrame$fullresults != "NaN" & TempFrame$Dsr.suspect=="FALSE")
-  return(reliable)
+  TempFrame <- data.frame(cullresults,Dsr$suspect)
+  UnReliable <- (is.na(cullresults) | is.nan(cullresults) | Dsr$suspect==TRUE) 
+  cullresults[UnReliable]<-NA
+  return(cullresults)
 }
 
 ###### Start of program  ###### 
