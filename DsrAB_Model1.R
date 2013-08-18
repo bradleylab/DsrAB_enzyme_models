@@ -47,9 +47,12 @@ Calc.alphax <-function(Rx, Rao, alphaT, f)
 }
 
 ###### Start of program  ###### 
+numsamples = 33
 Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
 attach(Dsr)
 names(Dsr)
+
+suspect=list(rep(0,numsamples))
 cdt = .045005  		#CDT ratio for 34/32. 
 cdt3x = 0.007379		#CDT ratio for 3x/32. 
 
