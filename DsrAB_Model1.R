@@ -50,7 +50,7 @@ Calc.alphax <-function(Rx, Rao, alphaT, f)
 Reliable <-function(fullresults)
 {
   TempFrame <- data.frame(fullresults,Dsr$suspect)
-  reliable = subset(TempFrame$fullresults, TempFrame$fullresults != "Na" & TempFrame$fullresults != "NaN" & TempFrame$Dsr.suspect=="TRUE")
+  reliable = subset(TempFrame$fullresults, TempFrame$fullresults != "Na" & TempFrame$fullresults != "NaN" & TempFrame$Dsr.suspect=="FALSE")
   return(reliable)
 }
 
