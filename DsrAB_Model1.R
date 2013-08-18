@@ -150,3 +150,4 @@ Results <- data.frame(Dsr$ExNo, Dsr$Temp, Dsr$Hours, alphaT.34,
                         alpha.ox.34, alpha.ox.33, alpha.ox.36, lambda.red.33, lambda.red.36, 
                         lambda.ox.33, lambda.ox.36)
 RResults <- Reliable(Results)
+write.table(RResults, file="ReliableResults.txt")
