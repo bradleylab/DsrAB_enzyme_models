@@ -57,7 +57,7 @@ Reliable <-function(cullresults)
 ###### Start of program  ###### 
 Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
 attach(Dsr)
-names(Dsr)
+#names(Dsr)
 numsamples = length(Dsr$ExNo)
 
 cdt = .045005  		#CDT ratio for 34/32. 
