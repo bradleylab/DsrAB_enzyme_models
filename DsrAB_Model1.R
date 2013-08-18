@@ -1,3 +1,6 @@
+#####
+#DsrAB Model 1. ASB for Leavitt et al., ###### 2013.
+#####
 ###################################################################
 #FUNCTIONS
 ##
@@ -44,7 +47,7 @@ Calc.alphax <-function(Rx, Rao, alphaT, f)
 }
 
 ###### Start of program  ###### 
-Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrame.txt",header=TRUE)
+Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
 attach(Dsr)
 names(Dsr)
 cdt = .045005  		#CDT ratio for 34/32. 
@@ -60,7 +63,7 @@ Dsr.33deltas <- Dsr[,c(17:20)]
 Dsr.36deltas <- Dsr[,c(21:24)]
 Dsr.34Rs <- Delta2R(Dsr.34deltas,cdt)
 colnames(Dsr.34Rs) <- c("SO30", "SO3D","SO3","oxD","ox","redD","red")
-Dsr.33Rs <- Delta2R(Dsr.33detlas,cdt3x)
+Dsr.33Rs <- Delta2R(Dsr.33deltas,cdt3x)
 colnames(Dsr.33Rs) <- c("SO30", "SO3", "ox", "red")
 Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
