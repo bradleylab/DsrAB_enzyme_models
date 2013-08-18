@@ -142,3 +142,11 @@ lambda.red.36.Delta =  log(alpha.red.36.Delta)/log(alpha.red.34.Delta)
 ##oxidized
 lambda.ox.36 = log(alpha.ox.36)/log(alpha.ox.34)
 lambda.ox.36.Delta =  log(alpha.ox.36.Delta)/log(alpha.ox.34.Delta)
+
+####   mean(Reliable(lambda.red.33), na.rm=TRUE)
+
+Results <- data.frame(Dsr$ExNo, Dsr$Temp, Dsr$Hours, alphaT.34,
+                        alphaT.33, alphaT.36, alpha.red.34, alpha.red.33, alpha.red.36, 
+                        alpha.ox.34, alpha.ox.33, alpha.ox.36, lambda.red.33, lambda.red.36, 
+                        lambda.ox.33, lambda.ox.36)
+RResults <- Reliable(Results)
