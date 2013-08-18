@@ -18,6 +18,13 @@ Delta2R <-function(Delta, CDT)
   return(Ratio)
 }
 
+#function to convert an alpha value to an epsilon
+alpha2epsilon <-function(alpha.in)
+{
+  epsilon=((alpha.in)-1)*1000  
+  return(epsilon)
+}
+
 #function to calculate thiosulfate fraction J
 CalcJ <-function(ThiosulfS, TrithioS)
 {
