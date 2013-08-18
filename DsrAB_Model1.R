@@ -77,7 +77,6 @@ Dsr.33Rs <- Delta2R(Dsr.33deltas,cdt3x)
 colnames(Dsr.33Rs) <- c("SO30", "SO3", "ox", "red")
 Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
-suspect <- Dsr[,25]
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
 Rp.34 = CalcRp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
