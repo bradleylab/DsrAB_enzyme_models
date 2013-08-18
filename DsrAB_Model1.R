@@ -46,13 +46,20 @@ Calc.alphax <-function(Rx, Rao, alphaT, f)
   return(alphax)
 }
 
+#function to show only reliable results from a calculation. Pass a vector
+Reliable <-function(fullresults)
+{
+  TempFrame <- data.frame(fullresults,Dsr$suspect)
+  reliable = subset(TempFrame$fullresults, TempFrame$fullresults != "Na" & TempFrame$fullresults != "NaN" & TempFrame$Dsr.suspect=="TRUE")
+  return(reliable)
+}
+
 ###### Start of program  ###### 
-numsamples = 33
 Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
 attach(Dsr)
 names(Dsr)
+numsamples = length(Dsr$ExNo)
 
-suspect=list(rep(0,numsamples))
 cdt = .045005  		#CDT ratio for 34/32. 
 cdt3x = 0.007379		#CDT ratio for 3x/32. 
 
@@ -70,7 +77,7 @@ Dsr.33Rs <- Delta2R(Dsr.33deltas,cdt3x)
 colnames(Dsr.33Rs) <- c("SO30", "SO3", "ox", "red")
 Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
-
+suspect <- Dsr[,25]
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
 Rp.34 = CalcRp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
@@ -93,7 +100,7 @@ Rp.33 = CalcRp(j,Dsr.33Rs$red,Dsr.33Rs$ox)
 Rp.33.Delta = CalcRp(j,Dsr.33Rs$redD,Dsr.33Rs$oxD)
 
 #calculate alpha total in each case
-alphaT.33 = Calc.alphaT(Rp.33,Dsr.33Rs$SO30,f)
+alphaT.33 <- Calc.alphaT(Rp.33,Dsr.33Rs$SO30,f)
 alphaT.33.Delta = Calc.alphaT(Rp.33.Delta,Dsr.33Rs$SO30,f)
 
 #calculate alphas for oxidized and reduced moieties
