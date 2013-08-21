@@ -46,6 +46,12 @@ Calc.alphaT <-function(Rp, Rao, f)
   return(alphaT)
 }
 
+#function to calculate alpha-total (alphaT)
+Calc.alphaT.a <-function(Ra, Rao, f)
+{
+  alphaT = log(Ra/Rao)/ln(f)a+1
+}
+
 #function to calculate alpha-x (alpha-x where x is reduced or oxidized)
 Calc.alphax <-function(Rx, Rao, alphaT, f)
 {
