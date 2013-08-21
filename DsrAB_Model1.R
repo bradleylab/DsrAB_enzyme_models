@@ -203,3 +203,5 @@ Results <- data.frame(Dsr$ExNo, Dsr$Temp, Dsr$Hours, alphaT.34,
                         lambda.ox.33, lambda.ox.36)
 RResults <- Reliable(Results)
 write.table(RResults, file="ReliableResults.txt")
+
+poslnf = -log(f)
