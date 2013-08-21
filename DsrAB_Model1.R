@@ -112,7 +112,7 @@ alpha.ox.34 = Calc.alphax(Dsr.34Rs$ox, Dsr.34Rs$SO30, alphaT.34, f)
 alpha.ox.34.Delta = Calc.alphax(Dsr.34Rs$oxD, Dsr.34Rs$SO30, alphaT.34.Delta, f)
 
 alpha.ox.34.a = Calc.alphax(Dsr.34Rs$ox, Dsr.34Rs$SO30, alphaT.34.a, f)
-alpha.ox.34.Delta.a = Calc.alphax(Dsr.34Rs$oxD, Dsr.34Rs$SO30, alphaT.34.a.Delta, f)
+alpha.ox.34.Delta.a = Calc.alphax(Dsr.34Rs$oxD, Dsr.34Rs$SO30, alphaT.34.Delta.a, f)
 
 ############ 33 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
