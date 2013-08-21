@@ -49,7 +49,7 @@ Calc.alphaT <-function(Rp, Rao, f)
 #function to calculate alpha-total (alphaT)
 Calc.alphaT.a <-function(Ra, Rao, f)
 {
-  alphaT = log(Ra/Rao)/ln(f)a+1
+  alphaT = log(Ra/Rao)/log(f)+1
 }
 
 #function to calculate alpha-x (alpha-x where x is reduced or oxidized)
@@ -97,6 +97,7 @@ Rp.34.Delta = Calc.Rp(j,Dsr.34Rs$redD,Dsr.34Rs$oxD)
 
 #calculate alpha total in each case
 alphaT.34 = Calc.alphaT(Rp.34, Dsr.34Rs$SO30, f)
+alphaT.34.a = Calc.alphaT.a(Rp.34, Dsr.34Rs$SO30, f)
 alphaT.34.Delta = Calc.alphaT(Rp.34.Delta,Dsr.34Rs$SO30,f)
 
 #calculate alphas for oxidized and reduced moieties
