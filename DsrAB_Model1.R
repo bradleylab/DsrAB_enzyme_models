@@ -96,7 +96,7 @@ cdt3x = 0.007379		#CDT ratio for 3x/32.
 j = CalcJ(Dsr$ThiosulfS,Dsr$TrithioS)
 f = Dsr$SO3n/Dsr$SO30
 Total.thionate.S = (Dsr$ThiosulfS + Dsr$TrithioS)
-
+SO3bydif = Dsr$SO30-Total.thionate.S
 
 #Pull out delta values & convert to Rs
 Dsr.34deltas <- Dsr[, c(10:16)]
@@ -110,11 +110,11 @@ Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
 
 #check mass balance
-SBalance = Dsr$SO30 - Dsr$SO3n - Total.thionate.S #must be near 0 if SO3 by difference
+SBalance = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
 MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
 MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
 MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
-MassBalance.product = Dsr$SO3n*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
+MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance = MassBalance.reactant - MassBalance.product
 MassBalance.R = MassBalance/Dsr$SO30
 MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000
