@@ -103,6 +103,8 @@ MassBalance.ox = Calc.oxbal(j,Dsr$d34ox)
 MassBalance.reactant = Dsr$SO30*Dsr$d34SO30 
 MassBalance.product = Dsr$SO3n*Dsr$d34SO3 + MassBalance.red + MassBalance.ox
 MassBalance = MassBalance.reactant - MassBalance.product
+MassBalance.delta = MassBalance/Dsr$SO30
+MassBalance.percentage = MassBalance/(Dsr$SO30*Dsr$d34SO30)
 
 #Pull out delta values & convert to Rs
 Dsr.34deltas <- Dsr[, c(10:16)]
