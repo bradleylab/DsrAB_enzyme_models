@@ -97,14 +97,6 @@ j = CalcJ(Dsr$ThiosulfS,Dsr$TrithioS)
 f = Dsr$SO3n/Dsr$SO30
 Total.thionate.S = (Dsr$ThiosulfS + Dsr$TrithioS)
 
-#check mass balance
-MassBalance.red = Calc.redbal(j,Dsr$d34red)
-MassBalance.ox = Calc.oxbal(j,Dsr$d34ox)
-MassBalance.reactant = Dsr$SO30*Dsr$d34SO30 
-MassBalance.product = Dsr$SO3n*Dsr$d34SO3 + MassBalance.red + MassBalance.ox
-MassBalance = MassBalance.reactant - MassBalance.product
-MassBalance.delta = MassBalance/Dsr$SO30
-MassBalance.percentage = MassBalance/(Dsr$SO30*Dsr$d34SO30)
 
 #Pull out delta values & convert to Rs
 Dsr.34deltas <- Dsr[, c(10:16)]
@@ -116,6 +108,20 @@ Dsr.33Rs <- Delta2R(Dsr.33deltas,cdt3x)
 colnames(Dsr.33Rs) <- c("SO30", "SO3", "ox", "red")
 Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
+
+#check mass balance
+SBalance = Dsr$SO30 - Dsr$SO3n - Total.thionate.S #must be near 0 if SO3 by difference
+MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
+MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
+MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
+MassBalance.product = Dsr$SO3n*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
+MassBalance = MassBalance.reactant - MassBalance.product
+MassBalance.R = MassBalance/Dsr$SO30
+MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000
+MassBalance.percentage = MassBalance/(Dsr$SO30*Dsr$d34SO30)
+
+
+
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
 Rp.34 = Calc.Rp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
