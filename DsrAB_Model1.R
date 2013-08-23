@@ -117,7 +117,7 @@ MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30
 MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance = MassBalance.reactant - MassBalance.product
 MassBalance.R = MassBalance/Dsr$SO30
-MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000
+MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
 MassBalance.percentage = MassBalance/(Dsr$SO30*Dsr$d34SO30)
 
 ############ 34 S ############ 
