@@ -117,8 +117,6 @@ MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance.diff = MassBalance.reactant - MassBalance.product #calc mass balance by difference
 MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance by quotient
 
-#ssh check
-
 MassBalance.diff.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
 MassBalance.diff.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
 MassBalance.diff.percentage = MassBalance.diff/(Dsr$SO30*Dsr$d34SO30) #something like a percentage
