@@ -39,20 +39,19 @@ Calc.Rp <-function(J, Rred, Rox)
   return(Rp)
 }
 
-#function to calculate isotope ratio of the total product (Rp)
+#function to calculate isotope mass balance sum for the reduced moieties
 Calc.redbal <-function(J,Rediso)
 {
   redbal=j*Total.thionate.S*Rediso
   return(redbal)
 }
 
-#function to calculate isotope ratio of the total product (Rp)
+#function to calculate isotope mass balance sum for the oxidized moieties
 Calc.oxbal <-function(J,Oxiso)
 {
   oxbal=(1-J)*Total.thionate.S*Oxiso
   return(oxbal)
 }
-
 
 #function to calculate alpha-total (alphaT)
 Calc.alphaT <-function(Rp, Rao, f)
