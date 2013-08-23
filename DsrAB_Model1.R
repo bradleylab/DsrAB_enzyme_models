@@ -39,6 +39,21 @@ Calc.Rp <-function(J, Rred, Rox)
   return(Rp)
 }
 
+#function to calculate isotope ratio of the total product (Rp)
+Calc.redbal <-function(J,Rediso)
+{
+  redbal=j*Total.thionate.S*Rediso
+  return(redbal)
+}
+
+#function to calculate isotope ratio of the total product (Rp)
+Calc.oxbal <-function(J,Oxiso)
+{
+  oxbal=(1-J)*Total.thionate.S*Oxiso
+  return(oxbal)
+}
+
+
 #function to calculate alpha-total (alphaT)
 Calc.alphaT <-function(Rp, Rao, f)
 {
@@ -67,6 +82,7 @@ Reliable <-function(cullresults)
   return(cullresults)
 }
 
+
 ###### Start of program  ###### 
 Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
 attach(Dsr)
@@ -77,8 +93,16 @@ cdt = .045005  		#CDT ratio for 34/32.
 cdt3x = 0.007379		#CDT ratio for 3x/32. 
 
 #calculate j,f
-j = CalcJ(Dsr$Thiosulf,Dsr$Trithio)
+j = CalcJ(Dsr$ThiosulfS,Dsr$TrithioS)
 f = Dsr$SO3n/Dsr$SO30
+Total.thionate.S = (Dsr$ThiosulfS + Dsr$TrithioS)
+
+#check mass balance
+MassBalance.red = Calc.redbal(j,Dsr$d34red)
+MassBalance.ox = Calc.oxbal(j,Dsr$d34ox)
+MassBalance.reactant = Dsr$SO30*Dsr$d34SO30 
+MassBalance.product = Dsr$SO3n*Dsr$d34SO3 + MassBalance.red + MassBalance.ox
+MassBalance = MassBalance.reactant - MassBalance.product
 
 #Pull out delta values & convert to Rs
 Dsr.34deltas <- Dsr[, c(10:16)]
