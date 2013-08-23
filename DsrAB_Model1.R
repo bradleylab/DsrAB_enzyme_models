@@ -114,13 +114,13 @@ MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
 MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
 MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
 MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
-MassBalance.diff = MassBalance.reactant - MassBalance.product
-MassBalance.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
-MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
-MassBalance.percentage = MassBalance.diff/(Dsr$SO30*Dsr$d34SO30)
+MassBalance.diff = MassBalance.reactant - MassBalance.product #calc mass balance by difference
+MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance by quotient
 
-MassBalance.frac = MassBalance.product/MassBalance.reactant  #alterenate error calc, where perfect balance = 1.000
-MassBalance.frac.delta = alpha2epsilon(MassBalance.frac)
+MassBalance.diff.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
+MassBalance.diff.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
+MassBalance.diff.percentage = MassBalance.diff/(Dsr$SO30*Dsr$d34SO30) #something like a percentage
+MassBalance.quot.delta = alpha2epsilon(MassBalance.frac) #convert quot to a delta-like number
 
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
