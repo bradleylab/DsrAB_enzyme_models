@@ -42,14 +42,14 @@ Calc.Rp <-function(J, Rred, Rox)
 #function to calculate isotope mass balance sum for the reduced moieties
 Calc.redbal <-function(J,Rediso)
 {
-  redbal=j*Total.thionate.S*Rediso
+  redbal=((1/2)*J+(1/3)*(1-J))*Total.thionate.S*Rediso
   return(redbal)
 }
 
 #function to calculate isotope mass balance sum for the oxidized moieties
 Calc.oxbal <-function(J,Oxiso)
 {
-  oxbal=(1-J)*Total.thionate.S*Oxiso
+  oxbal=((1/2)*J+(2/3)*(1-J))*Total.thionate.S*Oxiso
   return(oxbal)
 }
 
