@@ -114,10 +114,10 @@ MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
 MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
 MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
 MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
-MassBalance = MassBalance.reactant - MassBalance.product
-MassBalance.R = MassBalance/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
+MassBalance.diff = MassBalance.reactant - MassBalance.product
+MassBalance.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
 MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
-MassBalance.percentage = MassBalance/(Dsr$SO30*Dsr$d34SO30)
+MassBalance.percentage = MassBalance.diff/(Dsr$SO30*Dsr$d34SO30)
 
 MassBalance.frac = MassBalance.product/MassBalance.reactant  #alterenate error calc, where perfect balance = 1.000
 MassBalance.frac.delta = alpha2epsilon(MassBalance.frac)
