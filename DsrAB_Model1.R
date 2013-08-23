@@ -120,8 +120,6 @@ MassBalance.R = MassBalance/Dsr$SO30
 MassBalance.delta = R2Delta(abs(MassBalance.R),cdt) + 1000
 MassBalance.percentage = MassBalance/(Dsr$SO30*Dsr$d34SO30)
 
-
-
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
 Rp.34 = Calc.Rp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
