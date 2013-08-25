@@ -80,7 +80,7 @@ Reliable <-function(cullresults)
   cullresults[UnReliable]<-NA
   return(cullresults)
 }
-
+Mi
 
 ###### Start of program  ###### 
 Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
@@ -107,20 +107,6 @@ Dsr.33Rs <- Delta2R(Dsr.33deltas,cdt3x)
 colnames(Dsr.33Rs) <- c("SO30", "SO3", "ox", "red")
 Dsr.36Rs <- Delta2R(Dsr.36deltas,cdt3x)
 colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
-
-#check mass balance
-SBalance = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
-MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
-MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
-MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
-MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
-MassBalance.diff = MassBalance.reactant - MassBalance.product #calc mass balance by difference
-MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance by quotient
-
-MassBalance.diff.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
-MassBalance.diff.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
-MassBalance.diff.percentage = MassBalance.diff/(Dsr$SO30*Dsr$d34SO30) #something like a percentage
-MassBalance.quot.delta = alpha2epsilon(MassBalance.frac) #convert quot to a delta-like number
 
 ############ 34 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
@@ -226,6 +212,44 @@ lambda.ox.36.Delta =  log(alpha.ox.36.Delta)/log(alpha.ox.34.Delta)
 lambda.ox.36.a = log(alpha.ox.36.a)/log(alpha.ox.34.a)
 lambda.ox.36.Delta.a =  log(alpha.ox.36.Delta.a)/log(alpha.ox.34.Delta.a)
 
+
+#### Check mass balance   #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### 
+SBalance = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
+MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
+MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
+MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
+MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
+MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance by quotient
+MassBalance.quot.missing.34 = MassBalance.reactant*(1-MassBalance.quot)  #equal to m*R of the missing pool
+
+trial.Rs = seq(0.950,1.050,.01) #input the range of R's over which to iterate
+
+num.Rs=length(trial.Rs)
+Missing.mass = matrix(data=NA, numsamples,num.Rs)
+counter = 0
+for (tRval in trial.Rs){
+  counter = counter + 1
+  Missing.mass[,counter]=tRval*MassBalance.quot.missing.34
+}
+
+MM.complete = complete.cases(Missing.mass)
+Missing.mass.good = Missing.mass[MM.complete,]
+plot.new()        #set up plot for mass balance
+plot.window(xlim=range(trial.Rs),ylim=range(Missing.mass.good)) #axes of plot
+axis(1); axis(2); box()     #draw the axes & box
+title(xlab='R value', ylab='missing mass')    #label axes
+                                                #now draw the lines
+for (i in seq(1:length(Missing.mass.good[,1]))){    
+  lines(trial.Rs,Missing.mass.good[i,])
+}
+    
+###EXCLUDED: Mass balance by difference or as "delta"
+#MassBalance.diff = MassBalance.reactant - MassBalance.product #calc mass balance by difference
+#MassBalance.diff.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
+#MassBalance.diff.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
+#MassBalance.diff.percentage = MassBalance.diff/(Dsr$SO30*Dsr$d34SO30) #something like a percentage
+#MassBalance.quot.delta = alpha2epsilon(MassBalance.frac) #convert quot to a delta-like number
+####  #### #### END of MASS BALANCE #### #### #### #### #### #### #### #### 
 
 ####   mean(Reliable(lambda.red.33), na.rm=TRUE)
 
