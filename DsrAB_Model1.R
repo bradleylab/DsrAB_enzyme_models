@@ -222,6 +222,7 @@ MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance by quotient
 MassBalance.quot.missing.34 = MassBalance.reactant*(1-MassBalance.quot)  #equal to m*R of the missing pool
 
+### determine how much mass is 'missing' at a range of Rs
 trial.Rs = seq(0.950,1.050,.01) #input the range of R's over which to iterate
 
 num.Rs=length(trial.Rs)
@@ -258,6 +259,6 @@ Results <- data.frame(Dsr$ExNo, Dsr$Temp, Dsr$Hours, alphaT.34,
                         alpha.ox.34, alpha.ox.33, alpha.ox.36, lambda.red.33, lambda.red.36, 
                         lambda.ox.33, lambda.ox.36)
 RResults <- Reliable(Results)
-write.table(RResults, file="ReliableResults.txt")
+write.table(RResults,file="ReliableResults.csv",sep=",",row.names=F)
 
 poslnf = -log(f)
