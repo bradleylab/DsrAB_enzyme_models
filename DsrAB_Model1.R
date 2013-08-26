@@ -270,7 +270,16 @@ Results <- data.frame(LineNo, Dsr$ExNo, Dsr$Temp, Dsr$Hours, f, j, alphaT.34,
                         alphaT.33, alphaT.36, alpha.red.34, alpha.red.33, alpha.red.36, 
                         alpha.ox.34, alpha.ox.33, alpha.ox.36, lambda.red.33, lambda.red.36, 
                         lambda.ox.33, lambda.ox.36)
-RResults <- Reliable(Results)
+Results.a <- data.frame(LineNo, Dsr$ExNo, Dsr$Temp, Dsr$Hours, f, j, alphaT.34.a,
+                      alphaT.33.a, alphaT.36.a, alpha.red.34.a, alpha.red.33.a, alpha.red.36.a, 
+                      alpha.ox.34.a, alpha.ox.33.a, alpha.ox.36.a, lambda.red.33.a, lambda.red.36.a, 
+                      lambda.ox.33.a, lambda.ox.36.a)
+RResults<- Reliable(Results)
+RResults.a<- Reliable(Results.a)
 write.table(RResults,file="ReliableResults.csv",sep=",",row.names=F)
+write.table(RResults.a,file="ReliableResultsA.csv",sep=",",row.names=F)
+write.table(Results,file="AllResults.csv",sep=",",row.names=F)
+write.table(Results.a,file="AllResultsA.csv",sep=",",row.names=F)
+
 
 poslnf = -log(f)
