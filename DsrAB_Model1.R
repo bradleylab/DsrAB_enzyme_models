@@ -113,11 +113,11 @@ colnames(Dsr.36Rs) <- c("SO30", "SO3", "ox", "red")
 Rp.34 = Calc.Rp(j,Dsr.34Rs$red,Dsr.34Rs$ox)
 Rp.34.Delta = Calc.Rp(j,Dsr.34Rs$redD,Dsr.34Rs$oxD)
 
-#calculate alpha total in each case
-alphaT.34 = Calc.alphaT(Rp.34, Dsr.34Rs$SO30, f)
-alphaT.34.a = Calc.alphaT.a(Rp.34, Dsr.34Rs$SO30, f)
-alphaT.34.Delta = Calc.alphaT(Rp.34.Delta,Dsr.34Rs$SO30,f)
-alphaT.34.Delta.a = Calc.alphaT.a(Rp.34.Delta,Dsr.34Rs$SO30,f)
+#calculate alpha total in each case                             #the suffixes .a , .Delta, .Delta.a etc are used throughout the script
+alphaT.34 = Calc.alphaT(Rp.34, Dsr.34Rs$SO30, f)                #alpha.Total based on a Rayleigh function of SO30 and Rp(f). Data from MAT253
+alphaT.34.a = Calc.alphaT.a(Rp.34, Dsr.34Rs$SO30, f)            #alpha.Total based on a Rayleigh function of SO30 and SO3(f). Data from MAT253
+alphaT.34.Delta = Calc.alphaT(Rp.34.Delta,Dsr.34Rs$SO30,f)      #alpha.Total based on a Rayleigh function of SO30 and Rp(f). Data from Delta
+alphaT.34.Delta.a = Calc.alphaT.a(Rp.34.Delta,Dsr.34Rs$SO30,f)  #alpha.Total based on a Rayleigh function of SO30 and SO3(f). Data from Delta
 
 #calculate alphas for oxidized and reduced moieties
 alpha.red.34 = Calc.alphax(Dsr.34Rs$red, Dsr.34Rs$SO30, alphaT.34, f)
@@ -135,7 +135,7 @@ alpha.ox.34.Delta.a = Calc.alphax(Dsr.34Rs$oxD, Dsr.34Rs$SO30, alphaT.34.Delta.a
 ############ 33 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
 Rp.33 = Calc.Rp(j,Dsr.33Rs$red,Dsr.33Rs$ox)
-Rp.33.Delta = Calc.Rp(j,Dsr.33Rs$redD,Dsr.33Rs$oxD)
+Rp.33.Delta = Calc.Rp(j,Dsr.33Rs$redD,Dsr.33Rs$oxD)       #for minor isotopes, .Delta indicates that MAJOR isotope data from Delta (others from 253)
 
 #calculate alpha total in each case
 alphaT.33 <- Calc.alphaT(Rp.33,Dsr.33Rs$SO30,f)
@@ -160,7 +160,7 @@ alpha.ox.33.Delta.a = Calc.alphax(Dsr.33Rs$oxD, Dsr.33Rs$SO30, alphaT.33.Delta.a
 ############ 36 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
 Rp.36 = Calc.Rp(j,Dsr.36Rs$red,Dsr.36Rs$ox)
-Rp.36.Delta = Calc.Rp(j,Dsr.36Rs$redD,Dsr.36Rs$oxD)
+Rp.36.Delta = Calc.Rp(j,Dsr.36Rs$redD,Dsr.36Rs$oxD)   #for minor isotopes, .Delta indicates that MAJOR isotope data from Delta (others from 253)
 
 #calculate alpha total in each case
 alphaT.36 = Calc.alphaT(Rp.36,Dsr.36Rs$SO30,f)
@@ -223,39 +223,43 @@ MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance 
 MassBalance.quot.missing.34 = MassBalance.reactant*(1-MassBalance.quot)  #equal to m*R of the missing pool
 
 #also check mass balance via SO3 by difference method
+##SO3 by difference says that the residual SO3 at (f) is Simpliy the reactants - measured thionates. 
+##This is done in case the SO3(f) measurements are unreliable. Advise not to use this if it can be avoided.
 SBalance.dif = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
 MassBalance.product.dif = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance.quot.dif = MassBalance.product.dif/MassBalance.reactant  #calc mass balance by quotient
 MassBalance.quot.missing.34.dif = MassBalance.reactant*(1-MassBalance.quot.dif)  #equal to m*R of the missing pool
+            # based on equation that mass.reactant*R.reactant = mass.prodcut*R.product + mass.missing*R.missing
 
 
 ### determine how much mass is 'missing' at a range of Rs
-trial.R.low = 0.95*cdt
-trial.R.high = 1.05*cdt
+trial.R.low = 0.95*cdt                  #set a range of values for the 'missing' material from -50 permil
+trial.R.high = 1.05*cdt                 # to +50 permil (1.05*cdt). This range can be altered if desired.
 trial.Rs = seq(trial.R.low,trial.R.high, length.out=25) #input the range of R's over which to iterate
 trial.alphas = trial.Rs/cdt
-trial.deltas = (trial.Rs/cdt - 1)*1000
+trial.deltas = (trial.Rs/cdt - 1)*1000  #we solve for missing mass by R, but graph it as delta values
 
 num.Rs=length(trial.Rs)
-Missing.mass = matrix(data=NA, numsamples,num.Rs)
+Missing.mass = matrix(data=NA, numsamples,num.Rs)      #this just sets up a matrix, so that for each mass imbalance, we have a vector of possible R's and resulting mass
 counter = 0
 for (tRval in trial.Rs){
   counter = counter + 1
-  Missing.mass[,counter]=tRval*MassBalance.quot.missing.34
-}
+  Missing.mass[,counter]=tRval*MassBalance.quot.missing.34   #can add ".dif" to the end of this if switching to SO3-by-difference method
+}                                                            #this loop simply iterates through samples and fills in matrix
 
-MM.complete = complete.cases(Missing.mass)
-Missing.mass.good = Missing.mass[MM.complete,]
+MM.complete = complete.cases(Missing.mass)                  #To avoid error in plot(), skip lines that don't have data
+Missing.mass.good = Missing.mass[MM.complete,]              #Matrix of all the complete data
 plot.new()        #set up plot for mass balance
 plot.window(xlim=range(trial.deltas),ylim=range(Missing.mass.good)) #axes of plot
 axis(1); axis(2); box()     #draw the axes & box
 title(xlab='delta value', ylab='missing mass')    #label axes
-                                                #now draw the lines
+                                                #now iterate through samples and draw the lines
 for (i in seq(1:length(Missing.mass.good[,1]))){    
   lines(trial.deltas,Missing.mass.good[i,])
 }
     
-###EXCLUDED: Mass balance by difference or as "delta"
+###EXCLUDED: Mass balance by difference or as "delta". This was a previous way of calculating missing material
+##however, we decided that the quotient approach was easier to implement precisely
 #MassBalance.diff = MassBalance.reactant - MassBalance.product #calc mass balance by difference
 #MassBalance.diff.R = MassBalance.diff/Dsr$SO30  #normalize the mass*R error to R by dividing by total mass
 #MassBalance.diff.delta = R2Delta(abs(MassBalance.R),cdt) + 1000 #I don't know if this makes sense
@@ -264,6 +268,8 @@ for (i in seq(1:length(Missing.mass.good[,1]))){
 ####  #### #### END of MASS BALANCE #### #### #### #### #### #### #### #### 
 
 ####   mean(Reliable(lambda.red.33), na.rm=TRUE)
+
+### lines below just export data. Results, or "Reliable" results (which excludes samples flagged in infile)
 
 LineNo = seq(1:numsamples)
 Results <- data.frame(LineNo, Dsr$ExNo, Dsr$Temp, Dsr$Hours, f, j, alphaT.34,
@@ -282,4 +288,4 @@ write.table(Results,file="AllResults.csv",sep=",",row.names=F)
 write.table(Results.a,file="AllResultsA.csv",sep=",",row.names=F)
 
 
-poslnf = -log(f)
+poslnf = -log(f)         #convenient variable to use in some graphs.
