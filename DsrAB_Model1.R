@@ -80,7 +80,7 @@ Reliable <-function(cullresults)
   cullresults[UnReliable]<-NA
   return(cullresults)
 }
-Mi
+
 
 ###### Start of program  ###### 
 Dsr<-read.table("/Users/abradley/Documents/Rdata/Wil23Aug.txt",header=TRUE)
@@ -226,11 +226,15 @@ MassBalance.quot.missing.34 = MassBalance.reactant*(1-MassBalance.quot)  #equal 
 SBalance.dif = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
 MassBalance.product.dif = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance.quot.dif = MassBalance.product.dif/MassBalance.reactant  #calc mass balance by quotient
-MassBalance.quot.missing.34.dif = MassBalance.reactant*(1-MassBalance.quot)  #equal to m*R of the missing pool
+MassBalance.quot.missing.34.dif = MassBalance.reactant*(1-MassBalance.quot.dif)  #equal to m*R of the missing pool
 
 
 ### determine how much mass is 'missing' at a range of Rs
-trial.Rs = seq(0.950,1.050,.01) #input the range of R's over which to iterate
+trial.R.low = 0.95*cdt
+trial.R.high = 1.05*cdt
+trial.Rs = seq(trial.R.low,trial.R.high, length.out=25) #input the range of R's over which to iterate
+trial.alphas = trial.Rs/cdt
+trial.deltas = (trial.Rs/cdt - 1)*1000
 
 num.Rs=length(trial.Rs)
 Missing.mass = matrix(data=NA, numsamples,num.Rs)
@@ -243,12 +247,12 @@ for (tRval in trial.Rs){
 MM.complete = complete.cases(Missing.mass)
 Missing.mass.good = Missing.mass[MM.complete,]
 plot.new()        #set up plot for mass balance
-plot.window(xlim=range(trial.Rs),ylim=range(Missing.mass.good)) #axes of plot
+plot.window(xlim=range(trial.deltas),ylim=range(Missing.mass.good)) #axes of plot
 axis(1); axis(2); box()     #draw the axes & box
-title(xlab='R value', ylab='missing mass')    #label axes
+title(xlab='delta value', ylab='missing mass')    #label axes
                                                 #now draw the lines
 for (i in seq(1:length(Missing.mass.good[,1]))){    
-  lines(trial.Rs,Missing.mass.good[i,])
+  lines(trial.deltas,Missing.mass.good[i,])
 }
     
 ###EXCLUDED: Mass balance by difference or as "delta"
@@ -261,7 +265,8 @@ for (i in seq(1:length(Missing.mass.good[,1]))){
 
 ####   mean(Reliable(lambda.red.33), na.rm=TRUE)
 
-Results <- data.frame(Dsr$ExNo, Dsr$Temp, Dsr$Hours, alphaT.34,
+LineNo = seq(1:numsamples)
+Results <- data.frame(LineNo, Dsr$ExNo, Dsr$Temp, Dsr$Hours, f, j, alphaT.34,
                         alphaT.33, alphaT.36, alpha.red.34, alpha.red.33, alpha.red.36, 
                         alpha.ox.34, alpha.ox.33, alpha.ox.36, lambda.red.33, lambda.red.36, 
                         lambda.ox.33, lambda.ox.36)
