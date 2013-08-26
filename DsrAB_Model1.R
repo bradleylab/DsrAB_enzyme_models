@@ -83,7 +83,7 @@ Reliable <-function(cullresults)
 Mi
 
 ###### Start of program  ###### 
-Dsr<-read.table("/Users/abradley/Documents/Rdata/Wil16Aug.txt",header=TRUE)
+Dsr<-read.table("/Users/abradley/Documents/Rdata/Wil23Aug.txt",header=TRUE)
 attach(Dsr)
 #names(Dsr)
 numsamples = length(Dsr$ExNo)
@@ -214,13 +214,20 @@ lambda.ox.36.Delta.a =  log(alpha.ox.36.Delta.a)/log(alpha.ox.34.Delta.a)
 
 
 #### Check mass balance   #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### 
-SBalance = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
+SBalance = Dsr$SO30 - Dsr$SO3n - Total.thionate.S 
 MassBalance.red = Calc.redbal(j,Dsr.34Rs$red)
 MassBalance.ox = Calc.oxbal(j,Dsr.34Rs$ox)
 MassBalance.reactant = Dsr$SO30*Dsr.34Rs$SO30 
-MassBalance.product = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
+MassBalance.product = Dsr.34Rs$SO3*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
 MassBalance.quot = MassBalance.product/MassBalance.reactant  #calc mass balance by quotient
 MassBalance.quot.missing.34 = MassBalance.reactant*(1-MassBalance.quot)  #equal to m*R of the missing pool
+
+#also check mass balance via SO3 by difference method
+SBalance.dif = Dsr$SO30 - SO3bydif - Total.thionate.S #must be 0 if SO3bydif
+MassBalance.product.dif = SO3bydif*Dsr.34Rs$SO3 + MassBalance.red + MassBalance.ox
+MassBalance.quot.dif = MassBalance.product.dif/MassBalance.reactant  #calc mass balance by quotient
+MassBalance.quot.missing.34.dif = MassBalance.reactant*(1-MassBalance.quot)  #equal to m*R of the missing pool
+
 
 ### determine how much mass is 'missing' at a range of Rs
 trial.Rs = seq(0.950,1.050,.01) #input the range of R's over which to iterate
