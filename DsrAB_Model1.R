@@ -83,7 +83,7 @@ Reliable <-function(cullresults)
 Mi
 
 ###### Start of program  ###### 
-Dsr<-read.table("/Users/abradley/Documents/Rdata/WilDataFrameCDT.txt",header=TRUE)
+Dsr<-read.table("/Users/abradley/Documents/Rdata/Wil16Aug.txt",header=TRUE)
 attach(Dsr)
 #names(Dsr)
 numsamples = length(Dsr$ExNo)
