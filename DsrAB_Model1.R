@@ -115,9 +115,9 @@ Rp.34.Delta = Calc.Rp(j,Dsr.34Rs$redD,Dsr.34Rs$oxD)
 
 #calculate alpha total in each case                             #the suffixes .a , .Delta, .Delta.a etc are used throughout the script
 alphaT.34 = Calc.alphaT(Rp.34, Dsr.34Rs$SO30, f)                #alpha.Total based on a Rayleigh function of SO30 and Rp(f). Data from MAT253
-alphaT.34.a = Calc.alphaT.a(Rp.34, Dsr.34Rs$SO30, f)            #alpha.Total based on a Rayleigh function of SO30 and SO3(f). Data from MAT253
+alphaT.34.a = Calc.alphaT.a(Dsr.34Rs$SO3, Dsr.34Rs$SO30, f)     #alpha.Total based on a Rayleigh function of SO30 and SO3(f). Data from MAT253
 alphaT.34.Delta = Calc.alphaT(Rp.34.Delta,Dsr.34Rs$SO30,f)      #alpha.Total based on a Rayleigh function of SO30 and Rp(f). Data from Delta
-alphaT.34.Delta.a = Calc.alphaT.a(Rp.34.Delta,Dsr.34Rs$SO30,f)  #alpha.Total based on a Rayleigh function of SO30 and SO3(f). Data from Delta
+alphaT.34.Delta.a = Calc.alphaT.a(Dsr.34Rs$SO3D,Dsr.34Rs$SO30,f)  #alpha.Total based on a Rayleigh function of SO30 and SO3(f). Data from Delta
 
 #calculate alphas for oxidized and reduced moieties
 alpha.red.34 = Calc.alphax(Dsr.34Rs$red, Dsr.34Rs$SO30, alphaT.34, f)
