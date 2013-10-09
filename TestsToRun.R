@@ -23,3 +23,8 @@ redd34 = Reliable(Dsr.34deltas$d34ox)
 plot(poslnf, oxd34, xlab = xlab.name, ylab=ylab.name)
 oxmod <- lm(oxd34 ~ poslnf)
 redmod <- lm(redd34 ~ poslnf)
+
+par(mfrow=c(1,2))
+lambda.ylab.name  = expression(paste((" d",lambda, ".")?)
+plot(f, Reliable(lambda.red.33.a), ylim=c(0.505,0.520), pch=21, col="black", bg="blue", ylab=lambda.ylab.name)
+plot(f, Reliable(lambda.ox.33.a), ylim=c(0.505,0.520), pch=21, col="black", bg="blue", ylab=lambda.ylab.name)
