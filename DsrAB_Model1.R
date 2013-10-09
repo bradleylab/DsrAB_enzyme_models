@@ -139,23 +139,18 @@ Rp.33.Delta = Calc.Rp(j,Dsr.33Rs$redD,Dsr.33Rs$oxD)       #for minor isotopes, .
 
 #calculate alpha total in each case
 alphaT.33 <- Calc.alphaT(Rp.33,Dsr.33Rs$SO30,f)
-alphaT.33.Delta = Calc.alphaT(Rp.33.Delta,Dsr.33Rs$SO30,f)
 
-alphaT.33.a <- Calc.alphaT.a(Rp.33,Dsr.33Rs$SO30,f)
-alphaT.33.Delta.a = Calc.alphaT.a(Rp.33.Delta,Dsr.33Rs$SO30,f)
+alphaT.33.a <- Calc.alphaT.a(Dsr.33Rs$SO3,Dsr.33Rs$SO30,f)
+
 
 #calculate alphas for oxidized and reduced moieties
 alpha.red.33 = Calc.alphax(Dsr.33Rs$red, Dsr.33Rs$SO30, alphaT.33, f)
-alpha.red.33.Delta = Calc.alphax(Dsr.33Rs$redD, Dsr.33Rs$SO30, alphaT.33.Delta, f)
 
 alpha.red.33.a = Calc.alphax(Dsr.33Rs$red, Dsr.33Rs$SO30, alphaT.33.a, f)
-alpha.red.33.Delta.a = Calc.alphax(Dsr.33Rs$redD, Dsr.33Rs$SO30, alphaT.33.Delta.a, f)
 
 alpha.ox.33 = Calc.alphax(Dsr.33Rs$ox, Dsr.33Rs$SO30, alphaT.33, f)
-alpha.ox.33.Delta = Calc.alphax(Dsr.33Rs$oxD, Dsr.33Rs$SO30, alphaT.33.Delta, f)
 
 alpha.ox.33.a = Calc.alphax(Dsr.33Rs$ox, Dsr.33Rs$SO30, alphaT.33.a, f)
-alpha.ox.33.Delta.a = Calc.alphax(Dsr.33Rs$oxD, Dsr.33Rs$SO30, alphaT.33.Delta.a, f)
 
 ############ 36 S ############ 
 #Calculate total R of product - using measurements on 253 (default) and on Delta (labeled Delta)
@@ -164,53 +159,40 @@ Rp.36.Delta = Calc.Rp(j,Dsr.36Rs$redD,Dsr.36Rs$oxD)   #for minor isotopes, .Delt
 
 #calculate alpha total in each case
 alphaT.36 = Calc.alphaT(Rp.36,Dsr.36Rs$SO30,f)
-alphaT.36.Delta = Calc.alphaT(Rp.36.Delta,Dsr.36Rs$SO30,f)
 
 alphaT.36.a = Calc.alphaT.a(Rp.36,Dsr.36Rs$SO30,f)
-alphaT.36.Delta.a = Calc.alphaT.a(Rp.36.Delta,Dsr.36Rs$SO30,f)
 
 #calculate alphas for oxidized and reduced moieties
 alpha.red.36 = Calc.alphax(Dsr.36Rs$red, Dsr.36Rs$SO30, alphaT.36, f)
-alpha.red.36.Delta = Calc.alphax(Dsr.36Rs$redD, Dsr.36Rs$SO30, alphaT.36.Delta, f)
 
 alpha.red.36.a = Calc.alphax(Dsr.36Rs$red, Dsr.36Rs$SO30, alphaT.36.a, f)
-alpha.red.36.Delta.a = Calc.alphax(Dsr.36Rs$redD, Dsr.36Rs$SO30, alphaT.36.Delta.a, f)
 
 alpha.ox.36 = Calc.alphax(Dsr.36Rs$ox, Dsr.36Rs$SO30, alphaT.36, f)
-alpha.ox.36.Delta = Calc.alphax(Dsr.36Rs$oxD, Dsr.36Rs$SO30, alphaT.36.Delta, f)
 
 alpha.ox.36.a = Calc.alphax(Dsr.36Rs$ox, Dsr.36Rs$SO30, alphaT.36.a, f)
-alpha.ox.36.Delta.a = Calc.alphax(Dsr.36Rs$oxD, Dsr.36Rs$SO30, alphaT.36.Delta.a, f)
 
 
 #######   LAMBDA 33   #######   
 ##reduced
 lambda.red.33 = log(alpha.red.33)/log(alpha.red.34)
-lambda.red.33.Delta =  log(alpha.red.33.Delta)/log(alpha.red.34.Delta)
 
 lambda.red.33.a = log(alpha.red.33.a)/log(alpha.red.34.a)
-lambda.red.33.Delta.a =  log(alpha.red.33.Delta.a)/log(alpha.red.34.Delta.a)
+
 ##oxidized
 lambda.ox.33 = log(alpha.ox.33)/log(alpha.ox.34)
-lambda.ox.33.Delta =  log(alpha.ox.33.Delta)/log(alpha.ox.34.Delta)
 
 lambda.ox.33.a = log(alpha.ox.33.a)/log(alpha.ox.34.a)
-lambda.ox.33.Delta.a =  log(alpha.ox.33.Delta.a)/log(alpha.ox.34.Delta.a)
 
 #######   LAMBDA 36   #######  
 ##reduced
 lambda.red.36 = log(alpha.red.36)/log(alpha.red.34)
-lambda.red.36.Delta =  log(alpha.red.36.Delta)/log(alpha.red.34.Delta)
 
 lambda.red.36.a = log(alpha.red.36.a)/log(alpha.red.34.a)
-lambda.red.36.Delta.a =  log(alpha.red.36.Delta.a)/log(alpha.red.34.Delta.a)
 
 ##oxidized
 lambda.ox.36 = log(alpha.ox.36)/log(alpha.ox.34)
-lambda.ox.36.Delta =  log(alpha.ox.36.Delta)/log(alpha.ox.34.Delta)
 
 lambda.ox.36.a = log(alpha.ox.36.a)/log(alpha.ox.34.a)
-lambda.ox.36.Delta.a =  log(alpha.ox.36.Delta.a)/log(alpha.ox.34.Delta.a)
 
 
 #### Check mass balance   #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### 
