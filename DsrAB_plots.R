@@ -113,9 +113,9 @@ TotMod.a<-cbind(TotMod.a, 0)  #0 = model uses reactant
 names(TotMod.a)[3] <- "model"
 
 TotAll<-rbind(TotMod,TotMod.a)
-plot(TotAll$f,TotAll$alphaT.34,ylim=c(1.000,1.016), xlim=c(0,1))
+plot(TotAll$f,TotAll$alphaT.34,ylim=c(0.988,1.008), xlim=c(0,1))
 
-by(OxAll,OxAll$model,summary)
+by(TotAll,TotAll$model,summary)
 
-OxLM = lm(OxAll$alpha.ox.34~OxAll$f+OxAll$model+OxAll$model:OxAll$f)
-anova(OxLM)
+TotLM = lm(TotAll[-34,]$alphaT.34~TotAll[-34,]$f+TotAll[-34,]$model+TotAll[-34,]$model:TotAll[-34,]$f)
+anova(TotLM)
