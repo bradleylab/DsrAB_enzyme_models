@@ -1,8 +1,7 @@
 ###############################
 ###    Mixing of isotope effects ####
 
-
-##based on product Rayleigh
+##first to set up the dataframe
 MixMod<-data.frame(Dsr.34Rs$SO3)
 MixMod<-cbind(MixMod, Dsr.34Rs$ox)
 MixMod<-cbind(MixMod, Dsr.34Rs$red)
@@ -13,10 +12,11 @@ names(MixMod)[3] <- "Rred"
 ## based on product Rayleigh
 ##Mix.alpha = 0.98467919
 
-Mix.alpha = 0.98467919
-
 ##based on reactant Rayleigh
 #Mix.alpha = 0.98478247
+
+#set Mix.alpha depending on which Rayleigh model you choose
+Mix.alpha = 0.98467919
 
 MixMod.complete = MixMod[complete.cases(MixMod),]
 Xs <- matrix(seq(0.10,0.99,by=0.01),nrow=1)
@@ -26,9 +26,9 @@ MixMod.complete<-cbind(MixMod.complete,XsM)
 n=dim(MixMod.complete)[2]
 MixMod.complete[,4:n] = (MixMod.complete$Rred-MixMod.complete[,4:n]*MixMod.complete$Rso3*Mix.alpha)/(MixMod.complete$Rox*(1-MixMod.complete[,4:n]))
 
-#plot(Xs[1,],MixMod.complete[1,4:n], type="n", ylim=c(0.950,1.0),ylab="alpha-unk",xlab="X")
+#plot the results
 plot(Xs[1,],MixMod.complete[1,4:n], type="n", ylim=c(0.976,1.0),ylab="alpha-unk",xlab="X")
-lines(Xs[1,],MixMod.complete[1,4:n])
+lines(Xs[1,],MixMod.complete[1,4:n])  #col=cm.colors(9)[1]
 lines(Xs[1,],MixMod.complete[2,4:n])
 lines(Xs[1,],MixMod.complete[3,4:n])
 lines(Xs[1,],MixMod.complete[4,4:n])
