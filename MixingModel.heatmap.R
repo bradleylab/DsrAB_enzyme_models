@@ -37,8 +37,3 @@ plot(Xs[1,],MixMod.plot[1,4:n], type="n", ylim=c(0.976,1.0),ylab="alpha-unk",xla
 for (jj in 1:9) {
 lines(Xs[1,],MixMod.plot[jj,4:n], lwd = 2, col=heat.colors(9)[rank(MixModf.complete$f)[jj]])
 }
-
-
-MixModf=cbind(MixMod,f)
-MixModf.complete = MixModf[complete.cases(MixModf),]
-rank(MixModf.complete$f)
