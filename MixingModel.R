@@ -27,7 +27,7 @@ n=dim(MixMod.complete)[2]
 MixMod.complete[,4:n] = (MixMod.complete$Rred-MixMod.complete[,4:n]*MixMod.complete$Rso3*Mix.alpha)/(MixMod.complete$Rox*(1-MixMod.complete[,4:n]))
 
 #plot the results
-plot(Xs[1,],MixMod.complete[1,4:n], type="n", ylim=c(0.976,1.0),ylab="alpha-unk",xlab="X")
+plot(Xs[1,],MixMod.complete[1,4:n], type="n", ylim=c(0.976,1.1),ylab="alpha-unk",xlab="X")
 lines(Xs[1,],MixMod.complete[1,4:n])  #col=cm.colors(9)[1]
 lines(Xs[1,],MixMod.complete[2,4:n])
 lines(Xs[1,],MixMod.complete[3,4:n])
