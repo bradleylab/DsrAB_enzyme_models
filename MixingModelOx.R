@@ -30,16 +30,16 @@ MixMod.complete[,5:n] = Mix.alpha*(MixMod.complete$Rso3/MixMod.complete$Rox)*(-4
 
 #plot the results
 plot(Xs[1,],MixMod.complete[1,5:n], type="n", ylim=c(0.976,1.1),ylab="alpha-unk",xlab="X", col="red")
-lines(Xs[1,],MixMod.complete[1,5:n],col="red")  #col=cm.colors(9)[1]
-lines(Xs[1,],MixMod.complete[2,5:n],col="red")
-lines(Xs[1,],MixMod.complete[3,5:n],col="red")
-lines(Xs[1,],MixMod.complete[4,5:n],col="red")
-lines(Xs[1,],MixMod.complete[5,5:n],col="red")
-lines(Xs[1,],MixMod.complete[6,5:n],col="red")
+lines(Xs[1,],MixMod.complete[1,5:n],col="green")  #col=cm.colors(9)[1]
+lines(Xs[1,],MixMod.complete[2,5:n],col="green")
+lines(Xs[1,],MixMod.complete[3,5:n],col="green")
+lines(Xs[1,],MixMod.complete[4,5:n],col="green")
+lines(Xs[1,],MixMod.complete[5,5:n],col="green")
+lines(Xs[1,],MixMod.complete[6,5:n],col="green")
 #lines 7 and 8 excluded, because these are included in calc of alpha for f near 1
 #lines(Xs[1,],MixMod.complete[7,5:n])
 #lines(Xs[1,],MixMod.complete[8,5:n])
-lines(Xs[1,],MixMod.complete[9,5:n],col="red")
-lines(Xs[1,],MixMod.complete[10,5:n],col="red")
-lines(Xs[1,],MixMod.complete[11,5:n],col="red")
+lines(Xs[1,],MixMod.complete[9,5:n],col="green")
+lines(Xs[1,],MixMod.complete[10,5:n],col="green")
+lines(Xs[1,],MixMod.complete[11,5:n],col="green")
 
