@@ -26,7 +26,7 @@ XsM <- Xs[rep(1:1,11),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
 n=dim(MixMod.complete)[2]
-MixMod.complete[,5:n] = Mix.alpha*(MixMod.complete$Rso3/MixMod.complete$Rox)*(2+(6*MixMod.complete[,5:n]-6*MixMod.complete[,5:n]*MixMod.complete$MM.j+2*MixMod.complete$MM.j-2)/(2*MixMod.complete[,5:n]-MixMod.complete[,5:n]*MixMod.complete$MM.j+MixMod.complete$MM.j+2))
+MixMod.complete[,5:n] = Mix.alpha*(MixMod.complete$Rso3/MixMod.complete$Rox)*(4*(MixMod.complete$MM.j-1)/((MixMod.complete$MM.j+2)*(MixMod.complete[,5:n]-1))+2)
 
 #plot the results
 plot(Xs[1,],MixMod.complete[1,5:n], type="n", ylim=c(0.8,1.1),ylab="alpha-unk",xlab="X", col="red")
