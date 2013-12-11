@@ -26,11 +26,11 @@ XsM <- Xs[rep(1:1,11),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
 n=dim(MixMod.complete)[2]
-MixMod.complete[,5:n] = (-5*MixMod.complete$Rox - 3*Mix.alpha*MixMod.complete$Rox*MixMod.complete$Rso3 + 10*(MixMod.complete$Rox^2)* MixMod.complete.complete[,5:n] - 2*Mix.alpha*MixMod.complete$Rox*MixMod.complete$Rso3*MixMod.complete.complete[,5:n] -
-5*(MixMod.complete$Rox^2) + 5 *Mix.alpha*MixMod.complete$Rox*MixMod.complete$Rso3*(MixMod.complete.complete[,5:n]^2) - sqrt(3) * sqrt (3*(Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)+ 
-4* (Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*MixMod.complete.complete[,5:n] +18*(Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*(MixMod.complete.complete[,5:n]^2) - 
-60 * (Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*(MixMod.complete.complete[,5:n]^3) + 35*(Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*(MixMod.complete.complete[,5:n]^4))) / 
-(5*((MixMod.complete$Rox^2) - 2*(MixMod.complete$Rox^2)*MixMod.complete.complete[,5:n] + (MixMod.complete$Rox^2)*(MixMod.complete.complete[,5:n]^2)))
+MixMod.complete[,5:n] = (-5*MixMod.complete$Rox - 3*Mix.alpha*MixMod.complete$Rox*MixMod.complete$Rso3 + 10*(MixMod.complete$Rox^2)* MixMod.complete[,5:n] - 2*Mix.alpha*MixMod.complete$Rox*MixMod.complete$Rso3*MixMod.complete[,5:n] -
+5*(MixMod.complete$Rox^2) + 5 *Mix.alpha*MixMod.complete$Rox*MixMod.complete$Rso3*(MixMod.complete[,5:n]^2) - sqrt(3) * sqrt (3*(Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)+ 
+4* (Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*MixMod.complete[,5:n] +18*(Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*(MixMod.complete[,5:n]^2) - 
+60 * (Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*(MixMod.complete[,5:n]^3) + 35*(Mix.alpha^2)*(MixMod.complete$Rox^2)*(MixMod.complete$Rso3^2)*(MixMod.complete[,5:n]^4))) / 
+(5*((MixMod.complete$Rox^2) - 2*(MixMod.complete$Rox^2)*MixMod.complete[,5:n] + (MixMod.complete$Rox^2)*(MixMod.complete[,5:n]^2)))
 
 #plot the results
 plot(Xs[1,],MixMod.complete[1,5:n], type="n",ylab="alpha-unk",xlab="X", col="red")
