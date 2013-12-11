@@ -157,4 +157,28 @@ lines(Xs[1,],MixMod.complete[9,4:n])
 lines(Xs[1,],MixMod.complete[10,4:n])
 lines(Xs[1,],MixMod.complete[11,4:n])
 
+#2Dec Plots for Wil
+Dropbox/DataShare_Alex_Wil/Figures.2Dec
+
+plot(Reliable(f),Reliable(Results$alpha.ox.34),xlab="f",ylab="alpha.SO3-sulfonate", xlim=rev(range(f)))
+plot(Reliable(f),Reliable(Results$alpha.red.34),xlab="f",ylab="alpha.SO3-reduced.S", xlim=rev(range(f)))
+plot(Reliable(f),Reliable(Dsr$d34ox),xlab="f",ylab="d34S.sulfonate", xlim=rev(range(f)))
+plot(Reliable(f),Reliable(Dsr$d34red),xlab="f",ylab="d34S.reduced.S", xlim=rev(range(f)))
+
+
+
+
+plot(Xs[1,],MixMod.complete[1,4:n], type="n", ylim=c(0.976,1.1),ylab="alpha.secondary",xlab="X")
+lines(Xs[1,],MixMod.complete[1,4:n])  #col=cm.colors(9)[1]
+lines(Xs[1,],MixMod.complete[2,4:n])
+lines(Xs[1,],MixMod.complete[3,4:n])
+lines(Xs[1,],MixMod.complete[4,4:n])
+lines(Xs[1,],MixMod.complete[5,4:n])
+lines(Xs[1,],MixMod.complete[6,4:n])
+#lines 7 and 8 excluded, because these are included in calc of alpha for f near 1
+#lines(Xs[1,],MixMod.complete[7,4:n])
+#lines(Xs[1,],MixMod.complete[8,4:n])
+lines(Xs[1,],MixMod.complete[9,4:n])
+lines(Xs[1,],MixMod.complete[10,4:n])
+lines(Xs[1,],MixMod.complete[11,4:n])
 
