@@ -26,14 +26,14 @@ XsM <- Xs[rep(1:1,11),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
 n=dim(MixMod.complete)[2]
-MixMod.complete[,5:n] = (-5*Rox - 3*Mix.alpha*Rox*Rso3 + 10*(Rox^2)* MixMod.complete[,5:n] - 2*Mix.alpha*Rox*Rso3*MixMod.complete[,5:n] -5*(Rox^2) + 5 *Mix.alpha*Rox*Rso3*(MixMod.complete[,5:n]^2) - sqrt(3) * sqrt (3*(Mix.alpha^2)*(Rox^2)*(Rso3^2)+ 
-4* (Mix.alpha^2)*(Rox^2)*(Rso3^2)*MixMod.complete[,5:n] +18*(Mix.alpha^2)*(Rox^2)*(Rso3^2)*(MixMod.complete[,5:n]^2) - 
-60 * (Mix.alpha^2)*(Rox^2)*(Rso3^2)*(MixMod.complete[,5:n]^3) + 35*(Mix.alpha^2)*(Rox^2)*(Rso3^2)*(MixMod.complete[,5:n]^4))) / 
-(5*((Rox^2) - 2*(Rox^2)*MixMod.complete[,5:n] + (Rox^2)*(MixMod.complete[,5:n]^2)))
-
+MixMod.complete[,5:n] = (-5*MixMod$Rox - 3*Mix.alpha*MixMod$Rox*MixMod$Rso3 + 10*(MixMod$Rox^2)* MixMod.complete[,5:n] - 2*Mix.alpha*MixMod$Rox*MixMod$Rso3*MixMod.complete[,5:n] -
+5*(MixMod$Rox^2) + 5 *Mix.alpha*MixMod$Rox*MixMod$Rso3*(MixMod.complete[,5:n]^2) - sqrt(3) * sqrt (3*(Mix.alpha^2)*(MixMod$Rox^2)*(MixMod$Rso3^2)+ 
+4* (Mix.alpha^2)*(MixMod$Rox^2)*(MixMod$Rso3^2)*MixMod.complete[,5:n] +18*(Mix.alpha^2)*(MixMod$Rox^2)*(MixMod$Rso3^2)*(MixMod.complete[,5:n]^2) - 
+60 * (Mix.alpha^2)*(MixMod$Rox^2)*(MixMod$Rso3^2)*(MixMod.complete[,5:n]^3) + 35*(Mix.alpha^2)*(MixMod$Rox^2)*(MixMod$Rso3^2)*(MixMod.complete[,5:n]^4))) / 
+(5*((MixMod$Rox^2) - 2*(MixMod$Rox^2)*MixMod.complete[,5:n] + (MixMod$Rox^2)*(MixMod.complete[,5:n]^2)))
 
 #plot the results
-plot(Xs[1,],MixMod.complete[1,5:n], type="n", ylim=c(0,15),ylab="alpha-unk",xlab="X", col="red")
+plot(Xs[1,],MixMod.complete[1,5:n], type="n",ylab="alpha-unk",xlab="X", col="red")
 lines(Xs[1,],MixMod.complete[1,5:n],col="green")  #col=cm.colors(9)[1]
 lines(Xs[1,],MixMod.complete[2,5:n],col="green")
 lines(Xs[1,],MixMod.complete[3,5:n],col="green")
