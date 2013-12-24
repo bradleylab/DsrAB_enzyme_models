@@ -168,21 +168,30 @@ plot(Reliable(f),Reliable(Dsr$d34red),xlab="f",ylab="d34S.reduced.S", xlim=rev(r
 
 
 
-plot(Xs[1,],MixMod.complete[1,4:n], type="n", ylim=c(0.976,1.1),ylab="alpha.secondary",xlab="X")
-lines(Xs[1,],MixMod.complete[1,4:n])  #col=cm.colors(9)[1]
-lines(Xs[1,],MixMod.complete[2,4:n])
-lines(Xs[1,],MixMod.complete[3,4:n])
-lines(Xs[1,],MixMod.complete[4,4:n])
-lines(Xs[1,],MixMod.complete[5,4:n])
-lines(Xs[1,],MixMod.complete[6,4:n])
+###reverse plot
+alpha.range = seq(0.980, 1.1, length=99)
+plot(alpha.range, Xs[1,], type="n", xlim=c(0.976,1.1),xlab="alpha.secondary",ylab="X")
+lines(MixMod.complete[1,4:n],Xs[1,])  #col=cm.colors(9)[1]
+lines(MixMod.complete[2,4:n],Xs[1,])
+lines(MixMod.complete[3,4:n],Xs[1,])
+lines(MixMod.complete[4,4:n],Xs[1,])
+lines(MixMod.complete[5,4:n],Xs[1,])
+lines(MixMod.complete[6,4:n],Xs[1,])
 #lines 7 and 8 excluded, because these are included in calc of alpha for f near 1
-#lines(Xs[1,],MixMod.complete[7,4:n])
-#lines(Xs[1,],MixMod.complete[8,4:n])
-lines(Xs[1,],MixMod.complete[9,4:n])
-lines(Xs[1,],MixMod.complete[10,4:n])
-lines(Xs[1,],MixMod.complete[11,4:n])
+#lines(MixMod.complete[7,4:n],Xs[1,])
+#lines(MixMod.complete[8,4:n],Xs[1,])
+lines(MixMod.complete[9,4:n],Xs[1,])
+lines(MixMod.complete[10,4:n],Xs[1,])
+lines(MixMod.complete[11,4:n],Xs[1,])
 
 
 
 
-plot(Reliable(alpha.red.34.a),Reliable(lambda.red.33.a),ylim=c(0.505,0.525))
+plot(Reliable(alpha.red.34.a),Reliable(lambda.red.33.a),ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
+plot(Reliable(alpha.ox.34.a),Reliable(lambda.ox.33.a),ylim=c(0.490,0.525), xlim=c(1.000,1.015),xlab="alpha.ox",ylab="lambda")
+
+plot(Reliable(alpha.red.34),Reliable(lambda.red.33),ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
+plot(Reliable(alpha.ox.34),Reliable(lambda.ox.33),ylim=c(0.490,0.525), xlim=c(1.000,1.015),xlab="alpha.ox",ylab="lambda")
+
+plot(alpha.red.34.a,lambda.red.33.a,ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
+plot(alpha.red.34,lambda.red.33,ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")

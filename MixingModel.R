@@ -19,7 +19,7 @@ names(MixMod)[3] <- "Rred"
 Mix.alpha = 0.98467919
 
 MixMod.complete = MixMod[complete.cases(MixMod),]
-Xs <- matrix(seq(0.10,0.99,by=0.01),nrow=1)
+Xs <- matrix(seq(0.01,0.99,by=0.01),nrow=1)
 XsM <- Xs[rep(1:1,11),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
