@@ -182,3 +182,7 @@ lines(Xs[1,],MixMod.complete[9,4:n])
 lines(Xs[1,],MixMod.complete[10,4:n])
 lines(Xs[1,],MixMod.complete[11,4:n])
 
+
+
+
+plot(Reliable(alpha.red.34.a),Reliable(lambda.red.33.a),ylim=c(0.505,0.525))
