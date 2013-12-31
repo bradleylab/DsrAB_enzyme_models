@@ -141,6 +141,9 @@ Xs <- matrix(seq(0.10,0.99,by=0.01),nrow=1)
 XsM <- Xs[rep(1:1,11),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
+f.rank<-rank(f[complete.cases(MixMod)])
+
+
 n=dim(MixMod.complete)[2]
 MixMod.complete[,4:n] = (MixMod.complete$Rred-MixMod.complete[,4:n]*MixMod.complete$Rso3*Mix.alpha)/(MixMod.complete$Rox*(1-MixMod.complete[,4:n]))
 
@@ -190,7 +193,7 @@ lines(MixMod.complete[11,4:n],Xs[1,])
 plot(Reliable(alpha.red.34.a),Reliable(lambda.red.33.a),ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
 plot(Reliable(alpha.ox.34.a),Reliable(lambda.ox.33.a),ylim=c(0.490,0.525), xlim=c(1.000,1.015),xlab="alpha.ox",ylab="lambda")
 
-plot(Reliable(alpha.red.34),Reliable(lambda.red.33),ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
+plot(Reliable(alpha.red.34),Reliable(lambda.red.33),ylim=c(0.490,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
 plot(Reliable(alpha.ox.34),Reliable(lambda.ox.33),ylim=c(0.490,0.525), xlim=c(1.000,1.015),xlab="alpha.ox",ylab="lambda")
 
 plot(alpha.red.34.a,lambda.red.33.a,ylim=c(0.505,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda")
