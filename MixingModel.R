@@ -18,9 +18,10 @@ names(MixMod)[3] <- "Rred"
 #set Mix.alpha depending on which Rayleigh model you choose
 Mix.alpha = 0.98467919
 
+MixMod<-Reliable(MixMod)
 MixMod.complete = MixMod[complete.cases(MixMod),]
 Xs <- matrix(seq(0.01,0.99,by=0.01),nrow=1)
-XsM <- Xs[rep(1:1,11),]
+XsM <- Xs[rep(1:1,length(MixMod.complete[,1])),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
 n=dim(MixMod.complete)[2]
