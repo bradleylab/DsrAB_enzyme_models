@@ -83,7 +83,7 @@ Reliable <-function(cullresults)
 
 
 ###### Start of program  ###### 
-Dsr<-read.table("Data_23Aug.txt",header=TRUE)
+Dsr<-read.table("Dsr_data_23Aug.txt",header=TRUE)  ##filename "Dsr_data_23Aug.txt" should be include in R home directory
 #attach(Dsr)
 #names(Dsr)
 numsamples = length(Dsr$ExNo)
