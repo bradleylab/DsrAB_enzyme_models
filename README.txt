@@ -14,7 +14,7 @@ Wil Leavitt wleavitt@fas.harvard.edu
 
 The included files are:
 
-Code_for_figures.R: this file was used to generate Figure 2
+_Code_for_figures.R_ : this file was used to generate Figure 2
 
 DsrAB_Model1.R: this file runs the calculations to solve for the fractionation between sulfite and sulfonate, and between sulfite and reduced S. It also solves for lambdas. 
 
