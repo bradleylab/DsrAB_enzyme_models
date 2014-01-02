@@ -22,4 +22,4 @@ The included files are:
 
 ***MixingModel.R***: this file runs the calculations to solve for the secondary fractionation in the two-fractionation model described in the manuscript supplement (and plotted in Figure 2C)
 
-***README.txt***: this file
+***README.md***: this file
