@@ -1,4 +1,4 @@
-Sulfur isotope fractionation by dissimilatory sulfite reductase
+**Sulfur isotope fractionation by dissimilatory sulfite reductase**
 
 William D. Leavitt, Alexander S. Bradley, André Santos, Inês A.C. Pereira, David T. Johnston.
 
