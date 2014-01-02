@@ -2,7 +2,7 @@
 
 William D. Leavitt, Alexander S. Bradley, André Santos, Inês A.C. Pereira, David T. Johnston.
 
-These are the R code files used to process the isotope data from enzyme experiments and solve for fractionation factors (alpha) as well as the 33.lambda exponent relating 34S and 33S fractionation. 
+These are the R code files used to process the isotope data from enzyme experiments and solve for fractionation factors (alpha) as well as the <sup>33</sup> exponent relating <sup>34</sup>S and <sup>33</sup>S fractionation. 
 
 Derivation of the equations is given in the supplementary files to the manuscript. 
 
@@ -16,7 +16,7 @@ The included files are:
 
 ***Code\_for\_figures.R*** : this file was used to generate Figure 2
 
-***DsrAB\_Model1.R*** : this file runs the calculations to solve for the fractionation between sulfite and sulfonate, and between sulfite and reduced S. It also solves for lambdas. 
+***DsrAB\_Model1.R*** : this file runs the calculations to solve for the fractionation between sulfite and sulfonate, and between sulfite and reduced S. It also solves for <sup>33</sup>lambdas. 
 
 ***Dsr\_data\_23Aug.txt***: a dataframe containing the raw isotope and concentration data
 
