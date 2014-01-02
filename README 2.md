@@ -14,12 +14,12 @@ Wil Leavitt wleavitt@fas.harvard.edu
 
 The included files are:
 
-_Code_for_figures.R_ : this file was used to generate Figure 2
+***Code\_for\_figures.R*** : this file was used to generate Figure 2
 
-_DsrAB_Model1.R_ : this file runs the calculations to solve for the fractionation between sulfite and sulfonate, and between sulfite and reduced S. It also solves for lambdas. 
+***DsrAB\_Model1.R*** : this file runs the calculations to solve for the fractionation between sulfite and sulfonate, and between sulfite and reduced S. It also solves for lambdas. 
 
-Dsr_data_23Aug.txt: a dataframe containing the raw isotope and concentration data
+***Dsr\_data\_23Aug.txt***: a dataframe containing the raw isotope and concentration data
 
-MixingModel.R: this file runs the calculations to solve for the secondary fractionation in the two-fractionation model described in the manuscript supplement (and plotted in Figure 2C)
+***MixingModel.R***: this file runs the calculations to solve for the secondary fractionation in the two-fractionation model described in the manuscript supplement (and plotted in Figure 2C)
 
-README.txt: this file
+***README.txt***: this file
