@@ -158,7 +158,7 @@ lines(Xs[1,],MixMod.complete[7,4:n])
 lines(Xs[1,],MixMod.complete[8,4:n])
 lines(Xs[1,],MixMod.complete[9,4:n])
 lines(Xs[1,],MixMod.complete[10,4:n])
-lines(Xs[1,],MixMod.complete[11,4:n])
+linMies(Xs[1,],MixMod.complete[11,4:n])
 
 #2Dec Plots for Wil
 Dropbox/DataShare_Alex_Wil/Figures.2Dec

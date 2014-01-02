@@ -24,6 +24,9 @@ Xs <- matrix(seq(0.01,0.99,by=0.01),nrow=1)
 XsM <- Xs[rep(1:1,length(MixMod.complete[,1])),]
 MixMod.complete<-cbind(MixMod.complete,XsM)
 
+f.reliable <-Reliable(f)
+f.MM.complete <-f.reliable[complete.cases(MixMod)]
+
 n=dim(MixMod.complete)[2]
 MixMod.complete[,4:n] = (MixMod.complete$Rred-MixMod.complete[,4:n]*MixMod.complete$Rso3*Mix.alpha)/(MixMod.complete$Rox*(1-MixMod.complete[,4:n]))
 
