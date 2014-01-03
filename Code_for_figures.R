@@ -11,7 +11,7 @@ OxPlot<-data.frame(Reliable(alpha.ox.34))
 OxPlot<-cbind(OxPlot,Reliable(lambda.ox.33))
 OxPlot<-cbind(OxPlot,f)
 OxPlot.complete = OxPlot[complete.cases(OxPlot),]
-plot(OxPlot.sorted[,1],OxPlot.sorted[,2],ylim=c(0.490,0.525), xlim=c(1.000,1.015),xlab="alpha.ox",ylab="lambda",pch=16, col=rgb(1,OxPlot.complete$f,OxPlot.complete$f))
+plot(OxPlot.complete[,1],OxPlot.sorted[,2],ylim=c(0.490,0.525), xlim=c(1.000,1.015),xlab="alpha.ox",ylab="lambda",pch=16, col=rgb(1,OxPlot.complete$f,OxPlot.complete$f))
 
 
 ###Figure 2C
