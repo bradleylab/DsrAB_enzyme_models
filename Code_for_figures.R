@@ -15,7 +15,7 @@ plot(OxPlot.complete[,1],OxPlot.complete[,2],ylim=c(0.490,0.525), xlim=c(1.000,1
 
 
 ###Figure 2C
-###reverse plot with grayscale
+###reverse plot with redscale
 alpha.range = seq(0.980, 1.1, length=99)
 plot(alpha.range, Xs[1,], type="n", xlim=c(0.976,1.03),xlab="alpha.secondary",ylab="X")
 lines(MixMod.complete[1,4:n],Xs[1,], col=rgb(1,f.MM.complete[1],f.MM.complete[1]))
