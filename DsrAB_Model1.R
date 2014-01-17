@@ -93,6 +93,10 @@ cdt3x = 0.007379		#CDT ratio for 3x/32.
 
 #calculate j,f
 j = CalcJ(Dsr$ThiosulfS,Dsr$TrithioS)
+jReal = j[complete.cases(Reliable(j))]
+jRealPos = jReal>0
+jError = sd(jReal[jRealPos])
+
 f = Dsr$SO3n/Dsr$SO30
 Total.thionate.S = (Dsr$ThiosulfS + Dsr$TrithioS)
 SO3bydif = Dsr$SO30-Total.thionate.S
