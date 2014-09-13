@@ -10,7 +10,7 @@ Questions regarding these files should be addressed to
 
 Alex Bradley abradley@eps.wustl.edu
 or
-Wil Leavitt wleavitt@fas.harvard.edu
+Wil Leavitt wleavitt@eps.wustl.edu
 
 The included files are:
 
