@@ -1,0 +1,16 @@
+1. Run calculation using measured SO3 and propagate error
+2. Run it again using pooled product
+-->determine whether error bars overlap
+
+Run a variety of calc's to see how invoking model2 can change the answer that we got from #1-2 above
+
+
+Solve system for a constant reduced fractionations (at t=0)
+Constant oxidized
+then constant for both and solve for what would be the d value of a pooled lost residual product
+
+
+Look at old trithionate Dsr data.. do they also get 0.1875?? Why or why not? is this constant?
+This is a problem for mass balance
+
+figure out what conditions would have to occur for this second reaction to happen (e.g. which coincidental reactions)

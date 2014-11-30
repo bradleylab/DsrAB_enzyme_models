@@ -4,7 +4,7 @@ RedPlot<-data.frame(Reliable(alpha.red.34))
 RedPlot<-cbind(RedPlot,Reliable(lambda.red.33))
 RedPlot<-cbind(RedPlot,f)
 RedPlot.complete = RedPlot[complete.cases(RedPlot),]
-plot(RedPlot.complete[,1],RedPlot.complete[,2],ylim=c(0.490,0.525), xlim=c(0.982,0.992),xlab="alpha.red",ylab="lambda",pch=16, col=rgb(1,RedPlot.complete$f,RedPlot.complete$f))
+plot(RedPlot.complete[,1],RedPlot.complete[,2],ylim=c(0.510,0.520), xlim=c(0.982,0.988),xlab="alpha.red",ylab="lambda",pch=16, col=rgb(1,RedPlot.complete$f,RedPlot.complete$f))
 
 ###Figure2B
 OxPlot<-data.frame(Reliable(alpha.ox.34))
